@@ -34,7 +34,7 @@ public class HelloController {
 		return "Hola " + name;
 	}
 	
-	@RequestMapping("/error")
+	@RequestMapping("/doerror")
 	public ResponseEntity<String> error() {
 		RuntimeException rte = new RuntimeException("Un error");
 		logger.error("initial", rte);
