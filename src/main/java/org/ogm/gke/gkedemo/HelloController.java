@@ -20,6 +20,7 @@ public class HelloController {
 	private static final Logger logger = LoggerFactory.getLogger(HelloController.class);
 	@RequestMapping("/")
 	public ResponseEntity<String> initial() {
+		Metrics.counter("initial").increment();
 		try {
 			logger.info(InetAddress.getLocalHost().getCanonicalHostName());
 		} catch (UnknownHostException e) {
@@ -30,7 +31,6 @@ public class HelloController {
 	
 	@RequestMapping("/hola")
 	public String sayHello(@RequestParam(value="name") String name) {
-		Metrics.counter("Hola ", "name", getClass().getSimpleName());
 		return "Hola " + name;
 	}
 	
